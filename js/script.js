@@ -38,6 +38,10 @@ $(document).ready(function(){
           alert(json.err);
         }else{
           alert(json.msg);
+          $("#userId").val("");
+          $("#password").val("");
+          $("#code").val("");
+          $("#codeform").css("display", "none");
         }
         
       });
