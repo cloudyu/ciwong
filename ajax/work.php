@@ -8,8 +8,10 @@ if(($_POST["access_token"] == "") || ($_POST["examName"] == "") || ($_POST["open
   echo json_encode(array("err" => "参数不正确"));
   exit;
 }
+require_once ("../data/data.php");
 require_once("../class/ciwong.class.php");
 $ciwong = new ciwong();
+$ciwong -> SetAnswer($answer);
 if($ciwong->CheckCode($_POST["code"], $_POST["access_token"])==false){
   echo json_encode(array("err" => "验证码错误, 请重新点击提交获取验证码"));
   exit;

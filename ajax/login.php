@@ -7,8 +7,10 @@ if(($_POST["userId"] == "") || ($_POST["userId"] == "")){
   echo json_encode(array("err" => "用户密码错误"));
   exit;
 }
+require_once ("../data/data.php");
 require_once("../class/ciwong.class.php");
 $ciwong = new ciwong();
+$ciwong -> SetAnswer($answer);
 $msg = $ciwong->login($_POST["userId"], $_POST["password"]);
 if($msg !== true){
   echo json_encode(array("err" => $msg["msg"]));
