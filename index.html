@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="习网自动答题">
+
+<title>习网自动答题</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" >习网自动答题</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://cloudyu.me/" target="new">主页</a></li>
+              <li><a href="http://blog.cloudyu.me/" target="new">博客</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="jumbotron">
+        <h1>干翻安全答题！！</h1>
+        <div class="row">
+          <div class="col-md-6">
+             <p>
+             习网的安全竞赛真的是越来越恶心了！！！<br/ ><br/ >
+             不过，现在你已经解放啦！！！<br/ ><br/ >
+             只要输入账号密码。我就可以帮你答题。<br/ ><br/ >
+             稳定<b>100</b>分哦！！！<br/ ><br/ >
+             </p>
+          </div>
+          <div class="col-md-6">
+            <form>
+              <div class="form-group">
+                <label for="userId">习网账号：</label>
+                <input type="text" class="form-control" id="userId" placeholder="账号" value="427507272">
+              </div>
+              <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" class="form-control" id="password" placeholder="密码" value="378423">
+              </div>
+              <div class="form-group" style="display:none" id="codeform">
+                <label for="code" style="display:block">验证码：</label>
+                <input type="text" class="form-control" style="width:150px; display:inline" id="code" placeholder="验证码">
+                <img width="60px" id="codeimg">
+              </div>
+              <br />
+              <span class="pull-right">
+                <button type="submit" class="btn btn-primary btn-lg ">提交</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-default ">清空</button>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
