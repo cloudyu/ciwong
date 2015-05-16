@@ -1,5 +1,4 @@
 <?php
-
 class ciwong{
   private $access_token, $expires_in, $openid, $refresh_token, $token_type;
   private $schoolId;
@@ -81,9 +80,15 @@ class ciwong{
       "randCode"=>$code,
       "userAnswer"=>$this->GetAnswer($examName)
       )), true);
+      //var_dump( $this->GetAnswer($examName));
+      if($arr["data"]["currScore"] < 80){//小于80认为答案有问题
+        file_put_contents("../data/data.php", $this->DelAnswer(file_get_contents("../data/data.php"), $examName));//删除答案
+        $this->record = true;//重新记录答案
+      }
       if($this->record === true){
         file_put_contents("../data/data.php", '$answer["' . $examName . '"] = \'' . $this->WorkAnswer($arr["data"]["result"]) ."';\r\n", FILE_APPEND);
       }
+      //var_dump($arr);
       return $arr["data"]["currScore"];
   }
   
@@ -178,15 +183,25 @@ class ciwong{
     $this->examName = $examName;
   }
   private function WorkAnswer($str){
-  $arr = explode("*", $str);
-  $r = array();
-  for($i = 0; $i < count($arr); ++$i){
-    $arr1 = explode("|", $arr[$i]);
-    array_push($r, '{"id":"' . $arr1[0] . '","val":"' . $arr1[3] . '"}');
+    $arr = explode("*", $str);
+    $r = array();
+    for($i = 0; $i < count($arr); ++$i){
+      $arr1 = explode("|", $arr[$i]);
+      array_push($r, '{"id":"' . $arr1[0] . '","val":"' . $arr1[3] . '"}');
+    }
+    return "[". join($r, ","). "]";
   }
-  return "[". join($r, ","). "]";
-}
-
+  public function DelAnswer($data, $examName){
+    //$data = file_get_contents("../data/data.php");
+    $answer = explode("\r\n", $data);
+    for($i = 0; $i < count($answer); ++$i){
+      if(strpos($answer[$i], '$answer["' . $examName . '"]')!==false){
+        unset($answer[$i]); 
+     }
+    }
+    array_filter($answer);
+    return join($answer, "\r\n");
+  }
 }
 
 
